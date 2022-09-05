@@ -21,7 +21,10 @@ function App() {
       (item) => item.name === newCartItem.name
     );
     if (isAlreadyThere) {
-      return;
+      isAlreadyThere.quantity = isAlreadyThere.quantity + 1;
+      shoppingCart.map((cartItem) =>
+        cartItem === isAlreadyThere ? isAlreadyThere : cartItem
+      );
     } else {
       setShopppingCart([newCartItem, ...shoppingCart]);
     }

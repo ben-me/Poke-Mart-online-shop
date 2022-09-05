@@ -8,7 +8,15 @@ export default function ProductCard({
   return (
     <Listelement>
       <img src={itemDetail.image} alt="" />
-      {itemDetail.name} <p>{itemDetail.cost}</p>
+      {itemDetail.name} <p>¥{itemDetail.cost}</p>
+      {isInCart ? (
+        <>
+          <p>{itemDetail.quantity}x</p>{" "}
+          <p>{itemDetail.cost * itemDetail.quantity}</p>
+        </>
+      ) : (
+        ""
+      )}
       <Button type="button" onClick={handleClick}>
         {isInCart ? "Remove Item" : "Add Item"}
       </Button>
@@ -32,7 +40,7 @@ const Listelement = styled.li`
     align-items: center;
 
     img {
-      grid-row: 1 / 4;
+      grid-row: 1 / 5;
       width: 60%;
       object-fit: contain;
     }

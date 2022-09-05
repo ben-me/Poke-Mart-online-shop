@@ -14,6 +14,7 @@ export default function ShoppingItem({ shopItem, onAddToCart }) {
             name: data.name,
             image: data.sprites.default,
             cost: data.cost,
+            quantity: 1,
           };
           setItemDetail(newItem);
         });
@@ -26,5 +27,11 @@ export default function ShoppingItem({ shopItem, onAddToCart }) {
     onAddToCart(itemDetail);
   }
 
-  return <ProductCard itemDetail={itemDetail} handleClick={handleClick} />;
+  return (
+    <ProductCard
+      itemDetail={itemDetail}
+      handleClick={handleClick}
+      isInCart={false}
+    />
+  );
 }

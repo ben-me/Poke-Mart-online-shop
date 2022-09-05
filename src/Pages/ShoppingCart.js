@@ -3,6 +3,12 @@ import { Link } from "react-router-dom";
 import CartItem from "../components/CartItem";
 
 export default function ShoppingCart({ shoppingCart, removeFromCart }) {
+  let sum = 0;
+
+  shoppingCart.forEach((item) => {
+    sum = sum + item.cost * item.quantity;
+  });
+
   return (
     <>
       <h2>Cart Items</h2>
@@ -15,6 +21,7 @@ export default function ShoppingCart({ shoppingCart, removeFromCart }) {
           />
         ))}
       </UnorderedList>
+      <h2>Sum: {sum}</h2>
       <BackToShop to="/"> Back to the Shop</BackToShop>
     </>
   );
