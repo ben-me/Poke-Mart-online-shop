@@ -59,7 +59,6 @@ const Listelement = styled.li`
   }
 `;
 const Button = styled.button`
-  background: azure;
   border: 1px solid black;
   border-radius: 5px;
 `;
