@@ -135,7 +135,7 @@ const AmountOfItems = styled.p`
   background-color: red;
   border-radius: 50%;
   width: 20px;
-  color: white;
+  color: black;
   text-align: center;
   position: absolute;
   right: 10rem;
