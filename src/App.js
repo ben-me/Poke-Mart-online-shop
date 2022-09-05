@@ -3,7 +3,6 @@ import "./App.css";
 import styled from "styled-components";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
-
 import ShoppingCart from "./Pages/ShoppingCart";
 
 function App() {
@@ -56,6 +55,7 @@ function App() {
               shoppingCart={shoppingCart}
               shopInventory={shopInventory}
               addToCart={addToCart}
+              removeFromCart={removeFromCart}
             />
           }
         />

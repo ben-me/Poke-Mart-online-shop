@@ -3,7 +3,12 @@ import ShoppingItem from "../components/ShoppingItem";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export default function Home({ shoppingCart, shopInventory, addToCart }) {
+export default function Home({
+  shoppingCart,
+  shopInventory,
+  addToCart,
+  removeFromCart,
+}) {
   return (
     <>
       <StyledLink to="/shopping-cart">
@@ -17,6 +22,7 @@ export default function Home({ shoppingCart, shopInventory, addToCart }) {
             key={item.name}
             shopItem={item}
             onAddToCart={addToCart}
+            onRemoveFromCart={removeFromCart}
           />
         ))}
       </UnorderedList>
