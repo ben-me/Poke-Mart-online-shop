@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import styled from "styled-components";
-import { Link, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 
 import ShoppingCart from "./Pages/ShoppingCart";
