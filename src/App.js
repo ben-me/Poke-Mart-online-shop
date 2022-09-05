@@ -3,6 +3,8 @@ import './App.css';
 import ShoppingItem from './components/ShoppingItem';
 import styled from 'styled-components';
 import CartItem from './components/CartItem';
+import { Link, Route, Routes } from 'react-router-dom';
+import cart from "./assets/cart.png"
 
 function App() {
   const itemAPI = 'https://pokeapi.co/api/v2/item/';
@@ -31,14 +33,25 @@ function App() {
   return (
     <div className="App">
       <Header>Poké Mart Online Shop</Header>
-      <h2>Cart Items</h2>
-      <UnorderedList>
+      
+      <Routes>
+      <Route path="/shopping-cart" element={<><h2>Cart Items</h2>
+        <UnorderedList>
         {shoppingCart.map((item) => <CartItem key={item.name} itemInCart={item} onRemoveFromCart={removeFromCart} />)}
-      </UnorderedList>
-      <h2>Shop Items</h2>
-      <UnorderedList>
+        </UnorderedList>
+        <BackToShop to='/'> Back to the Shop</BackToShop>
+      </>
+      } />
+        <Route path="/" element={<>
+          <StyledLink to="/shopping-cart"><CartImage src={cart} alt="" /><AmountOfItems>{shoppingCart.length}</AmountOfItems></StyledLink>
+        <h2>Shop Items</h2>
+        <UnorderedList>
         {shopInventory.map((item) => <ShoppingItem key={item.name} shopItem={item} onAddToCart={addToCart}/>)}
-      </UnorderedList>
+        </UnorderedList>
+      </>
+      }
+      />
+      </Routes>
     </div>
   );
 }
@@ -62,4 +75,42 @@ const UnorderedList = styled.ul`
 
 const Header = styled.h1`
   text-align: center;
+`
+
+const CartImage = styled.img`
+{  
+  display:block;
+  width: 150px;
+  max-width:100%;
+}
+`
+
+const StyledLink = styled(Link)`
+  display:block;
+  margin-right:0;
+  margin-left:auto;
+  width:200px;
+  text-decoration:none;
+  position:relative;
+`
+
+const BackToShop = styled(Link)`
+  color:black;
+  font-size: xx-large;
+  text-align:center;
+  width:100%;
+  display:inline-block;
+  margin-top:5rem;
+`
+
+const AmountOfItems = styled.p`
+  border: solid black 1px;
+  background-color:red;
+  border-radius: 50%;
+  width:20px;
+  color:white;
+  text-align:center;
+  position:absolute;
+  right:10rem;
+  bottom: -5px;
 `
