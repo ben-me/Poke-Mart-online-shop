@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import styled from "styled-components";
 
-export default function ShoppingItem({shopItem}){
+export default function ShoppingItem({shopItem, onAddToCart}){
     const [itemDetail, setItemDetail] = useState({})
     const detailURL = shopItem.url;
 
@@ -17,8 +17,12 @@ export default function ShoppingItem({shopItem}){
         });
     }, [detailURL])
 
+    function handleClick() {
+        onAddToCart(itemDetail);
+    }
 
-    return <Listelement><img src={itemDetail.image} alt=""/>{shopItem.name} <p>{itemDetail.cost}</p> <Button type="button">Add Item</Button></Listelement>
+
+    return <Listelement><img src={itemDetail.image} alt=""/>{shopItem.name} <p>{itemDetail.cost}</p> <button type="button" onClick={handleClick} >Add Item</button></Listelement>
 }
 
 const Listelement = styled.li`
@@ -29,12 +33,12 @@ const Listelement = styled.li`
     border-radius: 15px;
     width: 250px;
     height: 120px;
+    padding: 5px;
     display:grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     justify-items:center;
     align-items:center;
-    padding: 5px;
 
 
     img {
