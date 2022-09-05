@@ -20,8 +20,12 @@ function App() {
       return;
     } else {
       setShopppingCart([newCartItem, ...shoppingCart]);
-      console.log(shoppingCart);
     }
+  }
+
+  function removeFromCart(deleteItem) {
+    const filteredCart = shoppingCart.filter(item => item.name !== deleteItem.name);
+    setShopppingCart(filteredCart);
   }
 
   return (
@@ -29,7 +33,7 @@ function App() {
       <Header>Poké Mart Online Shop</Header>
       <h2>Cart Items</h2>
       <UnorderedList>
-        {shoppingCart.map((item) => <CartItem key={item.name} itemInCart={item} />)}
+        {shoppingCart.map((item) => <CartItem key={item.name} itemInCart={item} onRemoveFromCart={removeFromCart} />)}
       </UnorderedList>
       <h2>Shop Items</h2>
       <UnorderedList>

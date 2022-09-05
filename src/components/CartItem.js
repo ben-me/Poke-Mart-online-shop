@@ -1,8 +1,13 @@
 import styled from "styled-components"
 
-export default function CartItem({itemInCart}){
+export default function CartItem({itemInCart, onRemoveFromCart}){
+    
+    
+    function handleClick(){
+        onRemoveFromCart(itemInCart);
+    }
 
-    return <Listelement><img src={itemInCart.image}/>{itemInCart.name}</Listelement>
+    return <Listelement><img src={itemInCart.image}/>{itemInCart.name} <button type='button' onClick={handleClick}>Remove Item</button></Listelement>
 }
 
 const Listelement = styled.li`
@@ -16,7 +21,7 @@ const Listelement = styled.li`
     padding: 5px;
     display:grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     justify-items:center;
     align-items:center;
 
